@@ -1,0 +1,31 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    >
+
+    <!-- API: Info Adapters -->
+
+    <adapter
+        provides=".ZenPackCode.IZenPackCodeInfo"
+        for=".ZenPackCode.ZenPackCode"
+        factory=".ZenPackCode.ZenPackCodeInfo"
+        />
+
+    <!-- Browser Resources -->
+    <browser:resourceDirectory
+        name="ci"
+        directory="resources"
+        />
+
+    <browser:viewlet
+        name="js-ci"
+        paths="/++resource++ci/js/panels.js"
+        weight="10"
+        for="Products.ZenModel.Device.Device"
+        manager="Products.ZenUI3.browser.interfaces.IJavaScriptSrcManager"
+        class="Products.ZenUI3.browser.javascript.JavaScriptSrcBundleViewlet"
+        permission="zope2.Public"
+        />
+</configure>
